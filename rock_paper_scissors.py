@@ -42,21 +42,28 @@ while True:
     computer_move = possible_moves[random.randint(0,2)]
     print("Computer move: " + move_names[possible_moves.index(computer_move)])
 
-    if player_move == computer_move:
-        tie()
-
-    if player_move == "R":
-        if computer_move == "S":
-            lose()
-        else:
-            win()
-    elif player_move == "P":
-        if computer_move == "R":
-            lose()
-        else:
-            win()
-    else:
-        if computer_move == "P":
-            lose()
-        else:
-            win()
+    match player_move:
+        case "R":
+            match computer_move:
+                case "R":
+                    tie()
+                case "P":
+                    lose()
+                case "S":
+                    win()
+        case "P":
+            match computer_move:
+                case "R":
+                    win()
+                case "P":
+                    tie()
+                case "S":
+                    lose()
+        case "S":
+            match computer_move:
+                case "R":
+                    lose()
+                case "P":
+                    win()
+                case "S":
+                    tie()
